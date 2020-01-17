@@ -52,7 +52,7 @@ if __name__ == '__main__':
                 print("Nmap-Scan wird durchgeführt")
                 for EiPee in ipListe:
                     # Eigentlicher NMAP Scan
-                    Scanner.scan(EiPee, ports="0-1024", arguments='-sS -A -T4')
+                    Scanner.scan(EiPee, ports="0-1024", arguments='-sV -O')
                     # Scandaten in Datei schreiben
                     for hosthier in Scanner.all_hosts():
                         temp = {"IP": hosthier, "State": Scanner[hosthier].state(), "OS": {}, "Protocol": {}}
@@ -60,13 +60,19 @@ if __name__ == '__main__':
                         for opSy in Scanner[hosthier]['osmatch']:
                             temp["OS"][opSy['name']] = opSy['accuracy'] + "% accuracy"
                         for proto in Scanner[hosthier].all_protocols():
-                            temp["Protocol"][proto] = []
+                            temp["Protocol"][proto] = {}
                             lport = Scanner[hosthier][proto].keys()
                             lport = sorted(lport)
                             for port in lport:
-                                tempString = "port " + port.__str__() + " state: " \
-                                             + Scanner[hosthier][proto][port]['state']
-                                temp["Protocol"][proto].append(tempString)
+                                portString = "Port " + port.__str__()
+                                tempPortlist = {}
+                                tempPortlist['state'] = Scanner[hosthier][proto][port]['state']
+                                tempPortlist['service'] = Scanner[hosthier][proto][port]['name']
+                                tempPortlist['version'] = Scanner[hosthier][proto][port]['product'] \
+                                    + " " + Scanner[hosthier][proto][port]['version']
+                                tempPortlist['extrainfo'] = Scanner[hosthier][proto][port]['extrainfo']
+
+                                temp["Protocol"][proto][portString] = tempPortlist
                         jsonList["Nmap"][Scanner[hosthier].hostname()] = temp
                     # Programmfortschritt anzeigen
                     print("Bitte warten, {} von {} Scans wurden durchgeführt".format(zaehler, ipListe.__len__()))
