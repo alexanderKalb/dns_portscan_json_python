@@ -67,8 +67,11 @@ if __name__ == '__main__':
                                 portString = "Port " + port.__str__()
                                 tempPortlist = {}
                                 tempPortlist['state'] = Scanner[hosthier][proto][port]['state']
+                                tempPortlist['reason'] = Scanner[hosthier][proto][port]['reason']
                                 tempPortlist['service'] = Scanner[hosthier][proto][port]['name']
-                                tempPortlist['version'] = Scanner[hosthier][proto][port]['product'] \
+                                tempPortlist['product'] = Scanner[hosthier][proto][port]['product']
+                                tempPortlist['version'] = Scanner[hosthier][proto][port]['version']
+                                tempPortlist['versionfull'] = Scanner[hosthier][proto][port]['product'] \
                                     + " " + Scanner[hosthier][proto][port]['version']
                                 tempPortlist['extrainfo'] = Scanner[hosthier][proto][port]['extrainfo']
 
