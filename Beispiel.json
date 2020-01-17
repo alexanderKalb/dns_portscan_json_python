@@ -1,0 +1,25 @@
+{
+    "Domain": "google.de",
+    "IPv4": "216.58.205.227",
+    "IPv6": "2a00:1450:4001:81e::2003",
+    "CNAME": [],
+    "MX": [
+        "10 aspmx.l.google.com.",
+        "40 alt3.aspmx.l.google.com.",
+        "30 alt2.aspmx.l.google.com.",
+        "20 alt1.aspmx.l.google.com.",
+        "50 alt4.aspmx.l.google.com."
+    ],
+    "NS": [
+        "ns3.google.com.",
+        "ns4.google.com.",
+        "ns2.google.com.",
+        "ns1.google.com."
+    ],
+    "PTR": [],
+    "SRV": [],
+    "SOA": [
+        "ns1.google.com. dns-admin.google.com. 290031082 900 900 1800 60"
+    ],
+    "Nmap": {}
+}
