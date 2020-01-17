@@ -28,5 +28,6 @@ Folgendes macht Nmap im Programm:
 3. Gibt die Genauigkeit zu dem sich Nmap sicher ist beim OS
 4. Scannt die Standard-Ports(0-1023) und listet nach Protokoll
 5. Gibt an ob gefunde Ports offen oder geschlossen sind
+6. gibt den Service des Ports und die Version aus (unter Umständen trifft es auf tcpwrapped und kann dies nicht auslesen)
 
 Nmap ist noch mächtiger, die weiteren Funktionen wurden aber aus Zeit- und Übersichtlichkeitsgründen ausgelassen.
